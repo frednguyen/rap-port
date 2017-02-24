@@ -1,0 +1,12 @@
+{
+  "name": "rap-port",
+  "version": "1.0.0",
+  "description": "Chat application that interacts with IBM Watson's Tone Analyzer",
+  "main": "server.js",
+  "repository": "https://github.com/aldo-sanchez/rap-port.git",
+  "author": "Aldo Sanchez, Fred Nguyen, Alex Baker",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
