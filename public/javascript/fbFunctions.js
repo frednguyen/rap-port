@@ -1,6 +1,6 @@
-window.addEventListener('load', function() {
-  initApp();
-});
+var User = function(userName) {
+  this.userName = userName;
+}
 
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
@@ -16,13 +16,11 @@ initApp = function() {
   });
 };
 
+
+
 function setUserInfo(user_id, userName) {
-  var postData = {
-    userName: userName
-  };
-  var updates = {}
-   updates['/users/' + user_id] = postData;
-  return firebase.database().ref().update(updates);
+  var user = new User(userName);
+  return firebase.database().ref('/users/'+user_id).update(user);
 };
 
 function deleteUserInfo(user_id){
@@ -32,7 +30,6 @@ function deleteUserInfo(user_id){
     .then(function(snapshot) {
       var name = snapshot.ref.child(user_id).remove();
       firebase.auth().signOut().then(function() {
-        console.log()
         initApp();
       }, function(error) {
         if(error){throw error}
