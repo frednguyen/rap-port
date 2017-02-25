@@ -16,7 +16,8 @@ $('#sendMsg').on('click keypress', function() {
   }
   else{
     // firstMessage(chatGUID, message);
-    sendMessage(chatGUID, message);
+    getMembers(chatGUID, message);
+    // sendMessage(chatGUID, message);
   }
   
 });
@@ -24,7 +25,8 @@ $('#sendMsg').on('click keypress', function() {
 $(document).on('click keypress','.userBtn', function() {
   var uid = $(this).attr('data-uid');
   var name = $(this).attr('data-name');
-  console.log(user)
+  userSelecting = user.uid;
+  console.log(user.uid)
   initChatNodes(uid, name);
 });
 

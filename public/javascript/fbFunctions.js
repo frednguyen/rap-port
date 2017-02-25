@@ -8,7 +8,6 @@ var user;
 
 // Firebase references
 var usersRef = firebase.database().ref('users');
-
 var chatsRef = firebase.database().ref('chats');
 var messageRef = firebase.database().ref('messages');
 
@@ -22,7 +21,14 @@ usersRef.on('child_removed', function(data) {
 });
 
 messageRef.on('child_added', function(data) {
-  sendNotification();
+  chatGUID = getChatGUID();
+  var obj = data.val();
+  console.log('pre',obj)
+  for(key in obj) {
+    var friend = obj[key].to;
+  }
+  sendNotification(friend);
+  
 });
 
 // check for authoriazation
@@ -70,21 +76,32 @@ function getCurrentUsers() {
   });
 };
 
+// Initializes chat nodes by creating a new chats (meta data) node and members in chat created
 function initChatNodes(uid, name) {
-  // generate chat key
+  // generate new chat key
   var chatGUID = firebase.database().ref().push().key;
   var chats = {
     timestamp: Date.now()
   };
+
   var members = {};
-  members[uid] = true;
+  members[uid] = false;
   members[user.uid] = true;
+
+  // var messages = {
+  //   name: '',
+  //   message: '',
+  //   timestamp: Date.now()
+  // };
+
   firebase.database().ref('/chats/' + chatGUID).update(chats);
   firebase.database().ref('/members/' + chatGUID).update(members);
+  // firebase.database().ref('/messages/' + chatGUID).update(messages);
   goToChat(chatGUID);
 };
 
-function sendMessage(chatGUID, message) {
+// Send message only allows messges through if chatGUID is valid.
+function sendMessage(chatGUID, to, message) {
   chatsRef.child(chatGUID).once('value', function(snapshot) {
     var data = snapshot.val();
     if(data != null) {
@@ -92,12 +109,15 @@ function sendMessage(chatGUID, message) {
       var messageGUID = firebase.database().ref().push().key;
       messages = {
         name: user.name,
+        to: to,
         message: message,
         timestamp: Date.now()
       }
       firebase.database().ref('/messages/' +'/'+ chatGUID +'/'+ messageGUID).update(messages);
     }
-    else{console.log('nooooo', data)}
+    else{
+      console.log('nooooo', data)
+    }
   })
   
 };
@@ -106,24 +126,27 @@ function readMessage() {
 
 };
 
-function sendNotification() {
-  if(user.uid == 'lCCCnZELJ9WKfqb4FnJ5dFvpYb92') {
+function sendNotification(friend) {
+  if(user.uid == friend) {
     console.log('notified!')
-  }
-  // var chatGUID = getChatGUID();
-  // var membersRef = firebase.database().ref('/members/' + chatGUID);
-  // membersRef.once('value').then(function(snapshot) {
-  //   var obj = snapshot.val();
-  //   for(key in obj) {
-  //     console.log(key)
-  //     if(user.uid = key) {
-  //       console.log('thats me');
-  //     }
-  //     else{console.log('i need to send notification to him', key)}
-  //   }
-  // });
-}
+  };
+};
 
+function getMembers(chatGUID, message) {
+  var membersRef = firebase.database().ref('/members/' + chatGUID);
+  membersRef.once('value').then(function(snapshot) {
+    var obj = snapshot.val();
+    for(var key in obj) {
+      var notifyUser = obj[key]
+      if(!notifyUser) {
+        console.log(notifyUser, key, user.uid)
+        sendMessage(chatGUID, key, message)
+      }
+    }
+  });
+};
+
+// Gets ChatGUID for from chat window. 
 function getChatGUID() {
   var loc = window.location.href;
   return chatGUID = loc.substr(loc.indexOf('/chats/')+7);
