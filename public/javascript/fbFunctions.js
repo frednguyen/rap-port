@@ -66,14 +66,14 @@ function getCurrentUsers() {
 
 function initChatNodes(uid, userName) {
   // generate chat key
-  var newPostKey = firebase.database().ref().push().key;
+  var chatGUID = firebase.database().ref().push().key;
   var chats = {
     timestamp: Date.now()
   };
   var members = {};
   members[uid] = true;
   members[user.uid] = true;
-  firebase.database().ref('/chats/' + newPostKey).update(chats);
-  firebase.database().ref('/members/' + newPostKey).update(members);
-  goToChat(newPostKey);
+  firebase.database().ref('/chats/' + chatGUID).update(chats);
+  firebase.database().ref('/members/' + chatGUID).update(members);
+  goToChat(chatGUID);
 };

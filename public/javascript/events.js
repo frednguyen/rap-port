@@ -7,12 +7,17 @@ $('#st').on('click keypress', function() {
   deleteUserInfo(user.uid)  
 });
 
+$('#sendMsg').on('click keypress', function() {
+  console.log(test)
+});
+
 $(document).on('click keypress','.userBtn', function() {
   var uid = $(this).attr('data-uid');
   var userName = $(this).attr('data-name');
   initChatNodes(uid, userName);
 });
 
-function goToChat() {
-  $.get('/chats/' + key, function() {});
-}
+function goToChat(chatGUID) {
+  $.get('/chats/' + chatGUID, function(data) {});
+  window.location.href = "/chats/" + chatGUID;
+};
