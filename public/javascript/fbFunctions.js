@@ -1,8 +1,18 @@
-var User = function(userName) {
+var User = function(userName, user_id) {
   this.userName = userName;
-}
+  this.user_id = user_id
+};
+var user;
 
 var usersRef = firebase.database().ref('users');
+
+usersRef.on('child_added', function(data) {
+  getCurrentUsers();
+});
+
+usersRef.on('child_removed', function(data) {
+  getCurrentUsers();
+});
 
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
@@ -19,16 +29,17 @@ initApp = function() {
 };
 
 function setUserInfo(user_id, userName) {
-  var user = new User(userName);
-  return firebase.database().ref('/users/'+user_id).update(user);
+  user = new User(userName, user_id);
+  return firebase.database().ref('/users/' + user_id).update(user);
 };
 
-function deleteUserInfo(user_id){
+function deleteUserInfo(user_id) {
   console.log('deleting info for: ', user_id)
   var userRef = firebase.database().ref("users");
   userRef.once("value")
     .then(function(snapshot) {
       var name = snapshot.ref.child(user_id).remove();
+      user = null
       firebase.auth().signOut().then(function() {
         initApp();
       }, function(error) {
@@ -37,17 +48,13 @@ function deleteUserInfo(user_id){
   });
 };
 
-
-usersRef.on('child_added', function(data) {
-  getCurrentUsers();
-});
-usersRef.on('child_removed', function(data) {
-  console.log('log rem: ', data)
-});
-
-function getCurrentUsers(){
+function getCurrentUsers() {
   usersRef.once('value').then(function(snapshot) {
     var usersObj = snapshot.val();
     displayCurrentUsers(usersObj)
   });
+};
+
+function initChat() {
+
 }

@@ -8,5 +8,5 @@ function displayCurrentUsers(usersObj) {
     });
     userBtn.text(usersObj[key].userName)
     userBtn.appendTo('#currentUsers')
-  }
-}
+  };
+};
