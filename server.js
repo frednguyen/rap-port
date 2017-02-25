@@ -14,6 +14,11 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 })
 
+app.get('/chats/:key', function(req, res) {
+  var key = req.params.key
+  res.json(key);
+})
+
 app.listen(PORT, function() {
   console.log('Magic happens on port ' + PORT);
 });
