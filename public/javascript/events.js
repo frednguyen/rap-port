@@ -8,16 +8,26 @@ $('#st').on('click keypress', function() {
 });
 
 $('#sendMsg').on('click keypress', function() {
-  console.log('test');
+  var chatGUID = getChatGUID();
+  var message = $('#message').val().trim();
+  
+  if(message == '') {
+    return;
+  }
+  else{
+    // firstMessage(chatGUID, message);
+    sendMessage(chatGUID, message);
+  }
+  
 });
 
 $(document).on('click keypress','.userBtn', function() {
   var uid = $(this).attr('data-uid');
-  var userName = $(this).attr('data-name');
-  initChatNodes(uid, userName);
+  var name = $(this).attr('data-name');
+  console.log(user)
+  initChatNodes(uid, name);
 });
 
 function goToChat(chatGUID) {
-  // $.get('/chats/' + chatGUID, function(data) {});
   window.location.href = "/chats/" + chatGUID;
 };
