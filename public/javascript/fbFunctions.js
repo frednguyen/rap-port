@@ -9,7 +9,7 @@ var user;
 // Firebase references
 var usersRef = firebase.database().ref('users');
 
-var chatRef = firebase.database().ref('chats');
+var chatsRef = firebase.database().ref('chats');
 var messageRef = firebase.database().ref('messages');
 
 // db listeners to react to users signed on/out
@@ -85,14 +85,21 @@ function initChatNodes(uid, name) {
 };
 
 function sendMessage(chatGUID, message) {
-  var messageGUID = firebase.database().ref().push().key;
-  messages = {
-    name: user.name,
-    message: message,
-    timestamp: Date.now()
-  }
-  // firstMessage(chatGUID)
-  firebase.database().ref('/messages/' +'/'+ chatGUID +'/'+ messageGUID).update(messages);
+  chatsRef.child(chatGUID).once('value', function(snapshot) {
+    var data = snapshot.val();
+    if(data != null) {
+      console.log('data', data);
+      var messageGUID = firebase.database().ref().push().key;
+      messages = {
+        name: user.name,
+        message: message,
+        timestamp: Date.now()
+      }
+      firebase.database().ref('/messages/' +'/'+ chatGUID +'/'+ messageGUID).update(messages);
+    }
+    else{console.log('nooooo', data)}
+  })
+  
 };
 
 function readMessage() {
