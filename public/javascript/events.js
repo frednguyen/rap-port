@@ -8,7 +8,7 @@ $('#st').on('click keypress', function() {
 });
 
 $('#sendMsg').on('click keypress', function() {
-  console.log(test)
+  console.log('test');
 });
 
 $(document).on('click keypress','.userBtn', function() {
@@ -18,6 +18,6 @@ $(document).on('click keypress','.userBtn', function() {
 });
 
 function goToChat(chatGUID) {
-  $.get('/chats/' + chatGUID, function(data) {});
+  // $.get('/chats/' + chatGUID, function(data) {});
   window.location.href = "/chats/" + chatGUID;
 };
