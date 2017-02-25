@@ -2,6 +2,8 @@ var User = function(userName) {
   this.userName = userName;
 }
 
+var usersRef = firebase.database().ref('users');
+
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -15,8 +17,6 @@ initApp = function() {
     console.log(error);
   });
 };
-
-
 
 function setUserInfo(user_id, userName) {
   var user = new User(userName);
@@ -37,3 +37,17 @@ function deleteUserInfo(user_id){
   });
 };
 
+
+usersRef.on('child_added', function(data) {
+  getCurrentUsers();
+});
+usersRef.on('child_removed', function(data) {
+  console.log('log rem: ', data)
+});
+
+function getCurrentUsers(){
+  usersRef.once('value').then(function(snapshot) {
+    var usersObj = snapshot.val();
+    displayCurrentUsers(usersObj)
+  });
+}
