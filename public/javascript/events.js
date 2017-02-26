@@ -10,16 +10,16 @@ $('#st').on('click keypress', function() {
 $('#sendMsg').on('click keypress', function() {
   var chatGUID = getChatGUID();
   var message = $('#message').val().trim();
-  
+  mainChat = chatGUID;
   if(message == '') {
     return;
   }
   else{
-    // firstMessage(chatGUID, message);
+    // firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
+    //   console.log(data.val())
+    // })
     getMembers(chatGUID, message);
-    // sendMessage(chatGUID, message);
   }
-  
 });
 
 $(document).on('click keypress','.userBtn', function() {

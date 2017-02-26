@@ -5,6 +5,7 @@ var User = function(name, uid) {
 };
 // Initialize a global empty user
 var user;
+var mainChat;
 
 // Firebase references
 var usersRef = firebase.database().ref('users');
@@ -23,13 +24,15 @@ usersRef.on('child_removed', function(data) {
 messageRef.on('child_added', function(data) {
   chatGUID = getChatGUID();
   var obj = data.val();
-  console.log('pre',obj)
   for(key in obj) {
     var friend = obj[key].to;
   }
   sendNotification(friend);
-  
 });
+
+firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
+  console.log(data.val())
+})
 
 // check for authoriazation
 initApp = function() {
@@ -105,7 +108,7 @@ function sendMessage(chatGUID, to, message) {
   chatsRef.child(chatGUID).once('value', function(snapshot) {
     var data = snapshot.val();
     if(data != null) {
-      console.log('data', data);
+      // console.log('data', data);
       var messageGUID = firebase.database().ref().push().key;
       messages = {
         name: user.name,
@@ -139,7 +142,6 @@ function getMembers(chatGUID, message) {
     for(var key in obj) {
       var notifyUser = obj[key]
       if(!notifyUser) {
-        console.log(notifyUser, key, user.uid)
         sendMessage(chatGUID, key, message)
       }
     }
