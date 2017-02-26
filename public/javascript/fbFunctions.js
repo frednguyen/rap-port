@@ -38,7 +38,7 @@ messageRef.on('child_added', function(data) {
 firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
   var obj = data.val();
   console.log('event listener',obj.name, obj.message, obj.messageGUID);
-  displayMessage(obj.name, obj.message, obj.messageGUID);
+  displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
 });
 
 // check for authoriazation
@@ -120,6 +120,7 @@ function sendMessage(chatGUID, friend, message) {
         chat: chatGUID,
         name: user.name,
         me: user.uid,
+        myPhoto: user.photoURL,
         friend: friend,
         message: message,
         messageGUID: messageGUID,

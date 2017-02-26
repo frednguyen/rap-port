@@ -12,7 +12,6 @@ $('#sendMsg').on('click keypress', function() {
   var messageDiv = $('#message');
   var chatGUID = getChatGUID();
   var message = messageDiv.val().trim();
-  // mainChat = chatGUID;
   if(message == '') {
     return;
   }

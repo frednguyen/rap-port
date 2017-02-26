@@ -4,7 +4,7 @@ function displayCurrentUsers(usersObj) {
     var name = usersObj[key].name;
     console.log(name)
     var uid = usersObj[key].uid;
-    var photoUrl = usersObj[key].photoURL;
+    var photoURL = usersObj[key].photoURL;
     if(key != user.uid){
       var userBtn = $('<a></a>');
       var row = $('<div></div>');
@@ -22,8 +22,8 @@ function displayCurrentUsers(usersObj) {
         style: 'padding: 0px;'
       });
       userPhoto.attr({
-        src: photoUrl,
-        class: 'circle userPhoto'
+        src: photoURL,
+        class: 'circle responsive-img userPhoto',
       });
       userDiv.addClass('col s7 btnUserName');
       photoDiv.addClass('col s3');
@@ -56,30 +56,40 @@ function getNotification(friend, me, chat) {
   // $('#availableUsers').empty();
 };
 
-function displayMessage(name, message, mid) {
+function displayMessage(name, message, mid, photoURL) {
   var messagesCardContent = $('#messagesCardContent');
   var messageFillerSpan = $('#message-filler');
+
+  var photoDiv = $('<div></div>');
+  var userPhoto = $('<img>');
   var messageContainerDiv = $('<div></div>');
   var messageDiv = $('<div></div>');
   var nameDiv = $('<div></div>');
 
-  console.log('inside displayMessage',name, message, mid);
-
+  photoDiv.addClass('col s2')
+  userPhoto.attr({
+        src: photoURL,
+        class: 'circle userPhoto',
+        style: 'height: 50px'
+  });
   messageContainerDiv.attr({
-    class: 'message-container',
+    class: 'message-container row',
     id: mid
   });
-  messageDiv.addClass('message');
+  messageDiv.addClass('message col s10');
   nameDiv.addClass('name');
 
   messageDiv.text(message);
   nameDiv.text(name);
 
+  userPhoto.appendTo(photoDiv);
   messageContainerDiv.appendTo(messageFillerSpan);
+
+  photoDiv.appendTo(messageContainerDiv);
   messageDiv.appendTo(messageContainerDiv);
   nameDiv.appendTo(messageContainerDiv); 
 
- updateScroll(messagesCardContent);
+  updateScroll(messagesCardContent);
 }
 
 function updateScroll(div){

@@ -36,3 +36,15 @@
 #inputField {
   padding-right: 0px;
 }
+
+.message-container {
+  border-bottom: 1px solid black;
+  margin-bottom:5px;
+}
+
+.name {
+  font-style: italic;
+  color: rgba(208, 215, 226, .7);
+  font-size: 12px;
+  line-height: 33px;
+}
