@@ -7,33 +7,51 @@
     <!--Materialize CSS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+     <link rel="stylesheet" href="/css/chat.css">
   </head>
   <body>
-    <h1>This is the chat page!</h1>   
-    <div class="row">
+    <h3>This is the chat page!</h3>   
+    <div id="messagesCardRow" class="row chatRow">
       <div class="col s12 m6">
-        <div class="card large blue-grey darken-1">
-          <div class="card-content white-text">
-            <span id="message-filler"></span>
-          </div>
-          <div class="card-action">
+        <div id="messagesCard" class="card medium blue-grey darken-1">
+          <div id="messagesCardContent" class="card-content white-text">
+            <div id="messages">
+              <span id="message-filler"></span>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div id="formCardRow" class="row chatRow">
+      <div class="col s12 m6">
+        <div id="formCard" class="card medium blue-grey darken-1">
+          <div id="formCardContent" class="card-content white-text">
             <form action="#">
               <div class="row">
                 <div class="input-field col s12 white-text">
-                  <div class="col s8">
+                  <!--<div class="col s8">
+                    <input id="message" type="text" class="validate">
+                    <label for="message">message</label>
+                  </div>-->
+                  <div id="inputField" class="input-field col s8">
                     <input id="message" type="text" class="validate">
                     <label for="message">message</label>
                   </div>
-                  <button id="sendMsg" type="submit" class="btn waves-effect waves-light" style="text-align: right">
-                    <i class="material-icons right">send</i>
-                  </button>
+                  <div id="btnDiv">
+                    <button id="sendMsg" type="submit" class="btn waves-effect waves-light" style="text-align: right">
+                      Send
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
                 </div>
               </div>  
             </form>
-          </div>
+          </div> 
         </div>
       </div>
-    </div>        
+    </div>
+         
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 

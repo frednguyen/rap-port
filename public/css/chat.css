@@ -1,0 +1,38 @@
+#messages {
+  overflow-y: auto;
+  margin-bottom: 10px;
+  height: calc(100%);
+}
+#messagesCardContent {
+  overflow-y: auto;
+}
+/*#messagesCard {
+  overflow-y: scroll;
+}*/
+
+#formCard {
+  height: 100%;
+}
+
+#formCardContent {
+  padding-top:5px;
+  padding-bottom: 0px
+}
+  
+#messagesCardRow {
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+#messagesCard {
+  margin-bottom: 0px;
+}
+
+#btnDiv {
+  padding-top: 4%;
+  float: right;
+}
+
+#inputField {
+  padding-right: 0px;
+}

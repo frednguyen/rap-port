@@ -1,7 +1,9 @@
 // User constructor
-var User = function(name, uid) {
+var User = function(name, uid, email, photoURL) {
   this.name = name;
   this.uid = uid;
+  this.email = email;
+  this.photoURL = photoURL;
 };
 // Initialize a global empty user
 var user;
@@ -34,18 +36,26 @@ messageRef.on('child_added', function(data) {
 });
 
 firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
-  console.log(data.val())
-})
+  var obj = data.val();
+  console.log('event listener',obj.name, obj.message, obj.messageGUID);
+  displayMessage(obj.name, obj.message, obj.messageGUID);
+});
 
 // check for authoriazation
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
+    if (user != null) {
+      var uid = user.uid
+      user.providerData.forEach(function(profile) {
+        var name = profile.displayName;
+        var email = profile.email;
+        var photoURL = profile.photoURL;
+        console.log(name, email, photoURL)
+        setUserInfo(name, uid, email, photoURL);
+      });
       console.log('signed in!!! :)')
-      setUserInfo(user.uid, user.displayName);
     } else {
       console.log('signed Off :(')
-      
     }
   }, function(error) {
     console.log(error);
@@ -53,8 +63,9 @@ initApp = function() {
 };
 
 // set user info when logged in
-function setUserInfo(uid, name) {
-  user = new User(name, uid);
+function setUserInfo(name, uid, email, photoURL) {
+  user = new User(name, uid, email, photoURL);
+  console.log(user.photoURL)
   return firebase.database().ref('/users/' + uid).update(user);
 };
 
@@ -111,6 +122,7 @@ function sendMessage(chatGUID, friend, message) {
         me: user.uid,
         friend: friend,
         message: message,
+        messageGUID: messageGUID,
         timestamp: Date.now()
       }
       firebase.database().ref('/messages/' +'/'+ chatGUID +'/'+ messageGUID).update(messages);

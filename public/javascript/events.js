@@ -9,15 +9,16 @@ $('#st').on('click keypress', function() {
 
 $('#sendMsg').on('click keypress', function() {
   console.log('why am i not working')
+  var messageDiv = $('#message');
   var chatGUID = getChatGUID();
-  var message = $('#message').val().trim();
+  var message = messageDiv.val().trim();
   // mainChat = chatGUID;
   if(message == '') {
     return;
   }
   else{
-    
     getMembers(chatGUID, message);
+    messageDiv.val('');
     return false;
   }
 });
@@ -26,6 +27,7 @@ $(document).on('click keypress','.userBtn', function() {
   var uid = $(this).attr('data-uid');
   var name = $(this).attr('data-name');
   var href = $(this).attr('href');
+
   if(href == '#'){
     userSelecting = user.uid;
     console.log(user.uid)
