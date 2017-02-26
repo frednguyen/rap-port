@@ -25,7 +25,8 @@ messageRef.on('child_added', function(data) {
   chatGUID = getChatGUID();
   var obj = data.val();
   for(key in obj) {
-    var friend = obj[key].to;
+    var friend = obj[key].friend;
+
   }
   sendNotification(friend);
 });
@@ -117,10 +118,6 @@ function sendMessage(chatGUID, friend, message) {
   
 };
 
-function readMessage() {
-
-};
-
 function sendNotification(friend) {
   if(user.uid == friend) {
     console.log('notified!')
@@ -144,4 +141,4 @@ function getMembers(chatGUID, message) {
 function getChatGUID() {
   var loc = window.location.href;
   return chatGUID = loc.substr(loc.indexOf('/chats/')+7);
-}
+};
