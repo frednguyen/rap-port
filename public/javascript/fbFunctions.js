@@ -26,9 +26,10 @@ messageRef.on('child_added', function(data) {
   var obj = data.val();
   for(key in obj) {
     var friend = obj[key].friend;
-
+    var me = obj[key].me;
+    var chat = obj[key].chat;
   }
-  sendNotification(friend);
+  sendNotification(friend, me, chat);
 });
 
 firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
@@ -104,7 +105,9 @@ function sendMessage(chatGUID, friend, message) {
     if(data != null) {
       var messageGUID = firebase.database().ref().push().key;
       messages = {
+        chat: chatGUID,
         name: user.name,
+        me: user.uid,
         friend: friend,
         message: message,
         timestamp: Date.now()
@@ -118,9 +121,13 @@ function sendMessage(chatGUID, friend, message) {
   
 };
 
-function sendNotification(friend) {
+function sendNotification(friend, me, chat) {
+  
   if(user.uid == friend) {
+    console.log(me)
     console.log('notified!')
+    console.log(chat)
+    getNotification(friend, me, chat);
   };
 };
 

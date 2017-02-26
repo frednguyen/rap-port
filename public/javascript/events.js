@@ -22,9 +22,12 @@ $('#sendMsg').on('click keypress', function() {
 $(document).on('click keypress','.userBtn', function() {
   var uid = $(this).attr('data-uid');
   var name = $(this).attr('data-name');
-  userSelecting = user.uid;
-  console.log(user.uid)
-  initChatNodes(uid, name);
+  var href = $(this).attr('href');
+  if(href == '#'){
+    userSelecting = user.uid;
+    console.log(user.uid)
+    initChatNodes(uid, name);
+  }
 });
 
 function goToChat(chatGUID) {
