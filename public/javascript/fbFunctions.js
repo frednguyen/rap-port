@@ -28,8 +28,9 @@ messageRef.on('child_added', function(data) {
     var friend = obj[key].friend;
     var me = obj[key].me;
     var chat = obj[key].chat;
+    var message = obj[key].message;
   }
-  sendNotification(friend, me, chat);
+  sendNotification(friend, me, chat, message);
 });
 
 firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
@@ -121,12 +122,13 @@ function sendMessage(chatGUID, friend, message) {
   
 };
 
-function sendNotification(friend, me, chat) {
+function sendNotification(friend, me, chat, message) {
   
   if(user.uid == friend) {
     console.log(me)
     console.log('notified!')
     console.log(chat)
+    Materialize.toast(message, 4000)
     getNotification(friend, me, chat);
   };
 };

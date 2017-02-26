@@ -8,6 +8,7 @@ $('#st').on('click keypress', function() {
 });
 
 $('#sendMsg').on('click keypress', function() {
+  console.log('why am i not working')
   var chatGUID = getChatGUID();
   var message = $('#message').val().trim();
   // mainChat = chatGUID;
@@ -15,7 +16,9 @@ $('#sendMsg').on('click keypress', function() {
     return;
   }
   else{
+    
     getMembers(chatGUID, message);
+    return false;
   }
 });
 

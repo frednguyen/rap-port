@@ -26,4 +26,8 @@ function getNotification(friend, me, chat) {
   notification.text('1');
   notification.appendTo(userBtn);
   // $('#availableUsers').empty();
+};
+
+function displayMessage() {
+  
 }
