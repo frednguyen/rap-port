@@ -5,7 +5,7 @@ var User = function(name, uid) {
 };
 // Initialize a global empty user
 var user;
-var mainChat;
+var mainChat = getChatGUID();
 
 // Firebase references
 var usersRef = firebase.database().ref('users');
@@ -91,28 +91,20 @@ function initChatNodes(uid, name) {
   members[uid] = false;
   members[user.uid] = true;
 
-  // var messages = {
-  //   name: '',
-  //   message: '',
-  //   timestamp: Date.now()
-  // };
-
   firebase.database().ref('/chats/' + chatGUID).update(chats);
   firebase.database().ref('/members/' + chatGUID).update(members);
-  // firebase.database().ref('/messages/' + chatGUID).update(messages);
   goToChat(chatGUID);
 };
 
 // Send message only allows messges through if chatGUID is valid.
-function sendMessage(chatGUID, to, message) {
+function sendMessage(chatGUID, friend, message) {
   chatsRef.child(chatGUID).once('value', function(snapshot) {
     var data = snapshot.val();
     if(data != null) {
-      // console.log('data', data);
       var messageGUID = firebase.database().ref().push().key;
       messages = {
         name: user.name,
-        to: to,
+        friend: friend,
         message: message,
         timestamp: Date.now()
       }

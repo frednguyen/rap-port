@@ -10,14 +10,11 @@ $('#st').on('click keypress', function() {
 $('#sendMsg').on('click keypress', function() {
   var chatGUID = getChatGUID();
   var message = $('#message').val().trim();
-  mainChat = chatGUID;
+  // mainChat = chatGUID;
   if(message == '') {
     return;
   }
   else{
-    // firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
-    //   console.log(data.val())
-    // })
     getMembers(chatGUID, message);
   }
 });
