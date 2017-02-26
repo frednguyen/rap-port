@@ -29,7 +29,7 @@ $(document).ready(function(){
 			var ctx = $("#mycanvas");
 
 			var barGraph = new Chart(ctx, {
-				type: 'bar',
+				type: 'horizontalBar',
 				data: chartdata
 			});
 		},
