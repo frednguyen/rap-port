@@ -13,7 +13,7 @@ $('#sendMsg').on('click keypress', function() {
   var chatGUID = getChatGUID();
   var message = messageDiv.val().trim();
   if(message == '') {
-    return;
+    return false;
   }
   else{
     getMembers(chatGUID, message);

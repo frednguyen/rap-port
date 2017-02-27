@@ -19,6 +19,11 @@ app.get('/chats/:key', function(req, res) {
   res.sendFile(path.join(__dirname, 'chat.html'));
 });
 
+app.get('/test:count', function(req, res) {
+  var count = req.params.count;
+  res.end('wow')
+})
+
 app.listen(PORT, function() {
   console.log('Magic happens on port ' + PORT);
 });

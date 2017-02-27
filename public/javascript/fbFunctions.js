@@ -35,10 +35,15 @@ messageRef.on('child_added', function(data) {
   sendNotification(friend, me, chat, message);
 });
 
+var count = 0;
 firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
   var obj = data.val();
   console.log('event listener',obj.name, obj.message, obj.messageGUID);
   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
+  count++;
+  $.ajax({url: "/test:" + count, success: function(result){
+        console.log(result)
+    }});
 });
 
 // check for authoriazation

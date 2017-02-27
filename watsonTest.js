@@ -6,7 +6,7 @@ console.log(keys)
 var tone_analyzer = watson.tone_analyzer(keys);
 
 var emilyTxt = 'A word is dead when it is said, some say. Emily Dickinson';
-var myTxt = 'hello Im aldo and i love luisana rivas '
+var myTxt = 'just kidding man... i love you'
 
 tone_analyzer.tone({ text: myTxt },
   function(err, tone) {
