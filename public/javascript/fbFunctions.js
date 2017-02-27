@@ -136,7 +136,6 @@ function sendMessage(chatGUID, friend, message) {
 };
 
 function sendNotification(friend, me, chat, message) {
-  
   if(user.uid == friend) {
     console.log(me)
     console.log('notified!')
