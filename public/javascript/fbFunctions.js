@@ -74,12 +74,11 @@ initApp = function() {
         var photoURL = profile.photoURL;
         setUserInfo(name, uid, email, photoURL);
       });
-      console.log('signed in!!! :)')
     } else {
-      console.log('signed Off :(')
+      window.location.href = '/';
     }
-  }, function(error) {
-    console.log(error);
+  }, function(err) {
+    console.log(err);
   });
 };
 
