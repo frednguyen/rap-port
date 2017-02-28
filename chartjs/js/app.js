@@ -1,40 +1,29 @@
 $(document).ready(function(){
-	$.ajax({
-		url: "http://localhost:3306/chartjs/data.php",
-		method: "GET",
-		success: function(data) {
-			console.log(data);
-			var player = [];
-			var score = [];
+	var EmotionalTone = ['Anger', 'Disgust', 'Fear', 'Joy', 'Sadness'];
+	var EmotionalPercent = ['0.187858', '0.033392', '0.077501', '0.56593', '0.222565'];
+	var LanguageTone = ['Analytical', 'Confident', 'Tentative'];
+	var LanguagePercent = ['0', '0', '0'];
+	var SocialTone = ['Openness_big5', 'Conscientiousness_big5', 'Extraversion_big5', 'Agreeableness_big5', 'Emotional_range_big5'];
+	var SocialPercent = ['0.144215', '0.288072', '0.569773', '0.640682', '0.450624'];
 
-			for(var i in data) {
-				player.push("Player " + data[i].playerid);
-				score.push(data[i].score);
-			}
-
-			var chartdata = {
-				labels: player,
-				datasets : [
-					{
-						label: 'Player Score',
-						backgroundColor: 'rgba(200, 200, 200, 0.75)',
-						borderColor: 'rgba(200, 200, 200, 0.75)',
-						hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
-						hoverBorderColor: 'rgba(200, 200, 200, 1)',
-						data: score
-					}
-				]
-			};
-
-			var ctx = $("#mycanvas");
-
-			var barGraph = new Chart(ctx, {
-				type: 'horizontalBar',
-				data: chartdata
-			});
-		},
-		error: function(data) {
-			console.log(data);
+	var emotionaldata = {
+		labels: EmotionalTone,
+		datasets : [
+		{
+			label: 'Tone percentage',
+			backgroundColor: 'rgba(200, 200, 200, 0.75)',
+			borderColor: 'rgba(200, 200, 200, 0.75)',
+			hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+			hoverBorderColor: 'rgba(200, 200, 200, 1)',
+			data: EmotionalPercent
 		}
-	});
+		]
+	};
+
+		var ctx = $("#mycanvas");
+
+		var barGraph = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: emotionaldata
+		});
 });
