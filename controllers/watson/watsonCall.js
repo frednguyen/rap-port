@@ -1,6 +1,5 @@
 var watson = require('watson-developer-cloud');
 var keys = require('./watson_keys.js');
-var callFirebase = require('./nodeFirebase.js')
 
 var tone_analyzer = watson.tone_analyzer(keys);
 
