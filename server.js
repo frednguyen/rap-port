@@ -1,8 +1,12 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
+
 var app = express();
 
 var PORT = process.env.PORT || 8080;
+
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname+"/public"));
 
@@ -19,9 +23,11 @@ app.get('/chats/:key', function(req, res) {
   res.sendFile(path.join(__dirname, 'chat.html'));
 });
 
-app.get('/test:count', function(req, res) {
-  var count = req.params.count;
-  res.end('wow')
+app.post('/test', function(req, res) {
+  // console.log(req.body.message)
+  var message = req.body.message;
+  console.log('message ', message)
+  res.end('here')
 })
 
 app.listen(PORT, function() {

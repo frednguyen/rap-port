@@ -41,9 +41,28 @@ firebase.database().ref('/messages/' + mainChat).on('child_added', function(data
   console.log('event listener',obj.name, obj.message, obj.messageGUID);
   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
   count++;
-  $.ajax({url: "/test:" + count, success: function(result){
-        console.log(result)
-    }});
+  // if(user.uid == obj.me) {
+    $.ajax({
+      url: '/test',
+      type: "POST",
+      data: JSON.stringify(obj),
+      contentType: "application/json",
+      // complete: callback
+    }).then(function(data) {
+      console.log(data)
+    });
+  // }
+  // else {
+  //   $.ajax({
+  //   url: '/test',
+  //     type: "POST",
+  //     // data: '{}',
+  //     contentType: "application/json",
+  //     // complete: callback
+  //   }).then(function(data) {
+  //     console.log(data)
+  //   });
+  // }
 });
 
 // check for authoriazation
