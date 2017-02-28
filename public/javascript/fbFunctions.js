@@ -35,35 +35,33 @@ messageRef.on('child_added', function(data) {
   sendNotification(friend, me, chat, message);
 });
 
-var count = 0;
 firebase.database().ref('/messages/' + mainChat).on('child_added', function(data) {
   var obj = data.val();
-  console.log('event listener',obj.name, obj.message, obj.messageGUID);
   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
-  count++;
-  // if(user.uid == obj.me) {
-    $.ajax({
-      url: '/test',
-      type: "POST",
-      data: JSON.stringify(obj),
-      contentType: "application/json",
-      // complete: callback
-    }).then(function(data) {
-      console.log(data)
-    });
-  // }
-  // else {
-  //   $.ajax({
-  //   url: '/test',
-  //     type: "POST",
-  //     // data: '{}',
-  //     contentType: "application/json",
-  //     // complete: callback
-  //   }).then(function(data) {
-  //     console.log(data)
-  //   });
-  // }
+  var url = '/test';
+  if(user.uid == obj.me) {
+    postCall(url, JSON.stringify(obj));
+  }
+  else {
+    postCall(url, '{}');
+  }
 });
+
+var count = 0;
+firebase.database().ref('/gotTone/' + mainChat).on('child_added', function(data) {
+  count++
+  var obj = data.val();
+  console.log(count, obj);
+})
+
+function postCall(url, data) {
+  $.ajax({
+    url: url,
+    type: 'POST',
+    data: data,
+    contentType: 'application/json',
+  });
+}
 
 // check for authoriazation
 initApp = function() {
@@ -74,7 +72,6 @@ initApp = function() {
         var name = profile.displayName;
         var email = profile.email;
         var photoURL = profile.photoURL;
-        console.log(name, email, photoURL)
         setUserInfo(name, uid, email, photoURL);
       });
       console.log('signed in!!! :)')
@@ -89,7 +86,6 @@ initApp = function() {
 // set user info when logged in
 function setUserInfo(name, uid, email, photoURL) {
   user = new User(name, uid, email, photoURL);
-  console.log(user.photoURL)
   return firebase.database().ref('/users/' + uid).update(user);
 };
 
@@ -161,9 +157,6 @@ function sendMessage(chatGUID, friend, message) {
 
 function sendNotification(friend, me, chat, message) {
   if(user.uid == friend) {
-    console.log(me)
-    console.log('notified!')
-    console.log(chat)
     Materialize.toast(message, 4000)
     getNotification(friend, me, chat);
   };

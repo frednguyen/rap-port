@@ -2,7 +2,6 @@ function displayCurrentUsers(usersObj) {
   $('#availableUsers').empty();
   for(key in usersObj) {
     var name = usersObj[key].name;
-    console.log(name)
     var uid = usersObj[key].uid;
     var photoURL = usersObj[key].photoURL;
     if(key != user.uid){

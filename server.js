@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var firebaseCall = require('./nodeFirebase.js');
+var watson = require('./watsonTest.js');
 
 var app = express();
 
@@ -24,11 +26,17 @@ app.get('/chats/:key', function(req, res) {
 });
 
 app.post('/test', function(req, res) {
-  // console.log(req.body.message)
   var message = req.body.message;
+  var chatGUID = req.body.chat;
   console.log('message ', message)
-  res.end('here')
-})
+  watson(message, chatGUID, firebaseCall);
+  res.end()
+});
+
+// app.get('/new', function(req, res) {
+//   firebaseCall('123');
+//   res.end()
+// })
 
 app.listen(PORT, function() {
   console.log('Magic happens on port ' + PORT);

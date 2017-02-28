@@ -8,7 +8,6 @@ $('#st').on('click keypress', function() {
 });
 
 $('#sendMsg').on('click keypress', function() {
-  console.log('why am i not working')
   var messageDiv = $('#message');
   var chatGUID = getChatGUID();
   var message = messageDiv.val().trim();
@@ -29,7 +28,6 @@ $(document).on('click keypress','.userBtn', function() {
 
   if(href == '#'){
     userSelecting = user.uid;
-    console.log(user.uid)
     initChatNodes(uid, name);
   }
 });
