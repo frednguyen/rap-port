@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
 
 $('#st').on('click keypress', function() {
   var user = firebase.auth().currentUser;
-  deleteUserInfo(user.uid)  
+  deleteUserInfo(user.uid);
 });
 
 $('#sendMsg').on('click keypress', function() {
