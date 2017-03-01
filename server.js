@@ -11,6 +11,8 @@ var app = express();
 
 var PORT = process.env.PORT || 8080;
 
+var db = require("./models");
+
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname+"/public"));
@@ -20,6 +22,8 @@ app.use('/', dashboard);
 app.use('/', chats);
 app.use('/', tones);
 
-app.listen(PORT, function() {
-  console.log('Magic happens on port ' + PORT);
+db.sequelize.sync({force: true}).then(function() {
+  app.listen(PORT, function() {
+    console.log('Magic happens on port ' + PORT);
+  });
 });
