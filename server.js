@@ -4,8 +4,9 @@ var path = require('path');
 
 var index = require('./routes/index.js');
 var dashboard = require('./routes/dashboard.js');
-var chats = require('./routes/chats.js')
+var chats = require('./routes/chats.js');
 var tones = require('./routes/tones.js');
+// var sequelizeRoute = require('./routes/sequelize.js');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use('/', index);
 app.use('/', dashboard);
 app.use('/', chats);
 app.use('/', tones);
+// app.use('/', sequelizeRoute);
 
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {

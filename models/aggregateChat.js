@@ -4,11 +4,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    from: {
+    me: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    to: {
+    friend: {
       type: DataTypes.STRING,
       allowNull: false
     },

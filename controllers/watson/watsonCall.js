@@ -1,5 +1,5 @@
 var watson = require('watson-developer-cloud');
-var keys = require('./watson_keys.js');
+var keys = require('./../../config/watson_keys.js');
 
 var tone_analyzer = watson.tone_analyzer(keys);
 
