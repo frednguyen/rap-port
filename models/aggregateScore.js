@@ -2,7 +2,11 @@ module.exports = function(sequelize, DataTypes) {
   var AggregateScore = sequelize.define('AggregateScore', {
     chat_id: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
+    },
+    category_id: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     tone_id: {
       type: DataTypes.STRING,
