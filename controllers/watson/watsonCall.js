@@ -4,7 +4,7 @@ var keys = require('./watson_keys.js');
 var tone_analyzer = watson.tone_analyzer(keys);
 
 var emilyTxt = 'A word is dead when it is said, some say. Emily Dickinson';
-var myTxt = 'fred was here late...'
+var myTxt = 'Customer: Hello. Agent: Hello. Agent: How can I help you today? Customer: Someone created an account using my email account. Customer: This is not my account.';
 
 module.exports = function(text, chatGUID, callback) {
   if(text != undefined) {
