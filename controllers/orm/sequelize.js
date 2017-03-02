@@ -10,22 +10,21 @@ module.exports = function() {
       friend: friend,
       message: message
     }).then(function(data) {
-      // console.log(message)
-      // res.end();
       watsonCall(message, message_id, chat_id, firebaseCall);
     });
   },
   // getting an erro with chat id... it wants an integer not a guid....
-  this.createIndividualScore = function(message_id, chat_id, category_id, tone_id, score) {
+  this.createIndividualScore = function(emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, message_id) {
     db.IndividualScore.create({
-      // message_id: message_id,
-      category_id: category_id,
-      tone_id: tone_id, 
-      score: score,
+      emotion_ids: emotion_ids,
+      emotion_scores: emotion_scores, 
+      language_ids: language_ids,
+      language_scores: language_scores,
+      social_ids: social_ids,
+      social_scores: social_scores,
       IndividualChatMessageId: message_id
-      // IndividualChatId: chat_id
     }).then(function(data) {
-      console.log(data);
+      console.log('done')
     });
   }
   this.test = function(m){

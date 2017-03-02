@@ -4,15 +4,27 @@ module.exports = function(sequelize, DataTypes) {
     //   type: DataTypes.STRING,
     //   allowNull: false
     // },
-    category_id: {
+    emotion_ids: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    tone_id: {
+    emotion_scores: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    score: {
+    language_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    language_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    social_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    social_scores: {
       type: DataTypes.STRING,
       allowNull: false
     }
