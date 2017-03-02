@@ -1,12 +1,9 @@
 var express = require('express');
 var path = require('path');
 
-var firebaseCall = require('./../controllers/firebase/firebaseCall.js');
 var watsonCall = require('./../controllers/watson/watsonCall.js');
-var ORM = require('./../controllers/orm/sequelize.js');
-
+var ORM = require('./../controllers/orm/sequelize.js')
 var orm = new ORM();
-
 var router = express.Router();
 
 router.post('/test', function(req, res) {
@@ -21,5 +18,12 @@ router.post('/test', function(req, res) {
   watsonCall(obj)
   res.end()
 });
+
+// router.get('/test', function(req, res) {
+//   var obj = req.body;
+//   console.log('in here',obj)
+//   res.end()
+//   // orm.getScores()
+// })
 
 module.exports = router;

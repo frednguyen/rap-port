@@ -16,7 +16,18 @@ module.exports = function() {
       social_ids: social_ids,
       social_scores: social_scores
     }).then(function(data) {
-      firebaseCall(chat_id)
+      firebaseCall(chat_id, message_id)
+    })
+  };
+  
+  this.getScores = function() {
+    db.IndividualChat.findAll({
+      where: {
+        message_id: message_id,
+        friend: friend
+      }
+    }).then(function(data) {
+      console.log(data)
     })
   }
   // this.createIndividualChat = function(message_id, chat_id, me, friend, message, watsonCall){

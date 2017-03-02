@@ -8,7 +8,7 @@ admin.initializeApp({
 
 var db = admin.database();
 
-module.exports = function(chatGUID) {
+module.exports = function(chat_id, message_id) {
   var key = admin.database().ref().push().key;
-  admin.database().ref('/gotTone/' +'/'+ chatGUID +'/'+ key).update({key});
+  admin.database().ref('/gotTone/' +'/'+ chat_id +'/'+ key).update({message_id});
 }

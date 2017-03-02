@@ -37,6 +37,7 @@ messageRef.on('child_added', function (data) {
 
 firebase.database().ref('/messages/' + mainChat).on('child_added', function (data) {
   var obj = data.val();
+  console.log('post obj', obj)
   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
   var url = '/test';
   if (user.uid == obj.me) {
@@ -47,11 +48,15 @@ firebase.database().ref('/messages/' + mainChat).on('child_added', function (dat
   }
 });
 
-var count = 0;
 firebase.database().ref('/gotTone/' + mainChat).on('child_added', function (data) {
-  count++
   var obj = data.val();
-  console.log('gots tonesss',count, obj);
+  // console.log('gots tonesss', obj);
+  request = {
+    message_id: obj.message_id,
+    uid: user.uid
+  }
+  console.log('get obj', request)
+  getCall('/test',JSON.stringify(request))
 })
 
 function postCall(url, data) {
@@ -59,8 +64,17 @@ function postCall(url, data) {
     url: url,
     type: 'POST',
     data: data,
-    contentType: 'application/json',
+    contentType: 'application/json'
   });
+}
+
+function getCall(url, data) {
+  $.ajax({
+    url: url,
+    type: 'GET',
+    data: data,
+    contentType: 'application/json'
+  })
 }
 
 // check for authoriazation
