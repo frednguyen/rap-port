@@ -1,22 +1,155 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>ChartJS - BarGraph</title>
-		<style type="text/css">
-			#chart-container {
-				width: 640px;
-				height: auto;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="chart-container">
-			<canvas id="mycanvas"></canvas>
-		</div>
 
-		<!-- javascript -->
-		<script type="text/javascript" src="chartjs/js/jquery-3.1.1.min.js"></script>
+<head>
+	<title>Friends Finder</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+
+
+</head>
+
+<body style="margin: 0 5% 0 5%">
+
+	<header>
+		<nav>
+
+			<div class="nav-wrapper grey darken-3">
+				<a href="/" class="brand-logo"><i class="material-icons">people_outline</i>friends finder</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/survey">survey</a></li>
+					<li><a href="badges.html">see friends</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="sass.html">survey</a></li>
+					<li><a href="badges.html">see friends</a></li>
+				</ul>
+			</div>
+
+		</nav>
+
+	</header>
+
+	<main>
+		<h3>This is the chat page!</h3>
+		<div class="row">
+			<div class="col m4">
+				<div id="messagesCardRow" class="row chatRow">
+					<div class="col s12 m12">
+						<div id="messagesCard" class="card medium blue-grey darken-1">
+							<div id="messagesCardContent" class="card-content white-text">
+								<div id="messages">
+									<span id="message-filler"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="formCardRow" class="row chatRow">
+					<div class="col s12 m12">
+						<div id="formCard" class="card medium blue-grey darken-1" style="height: 150px">
+							<div id="formCardContent" class="card-content white-text">
+								<form action="#">
+									<div class="row">
+										<div class="input-field col s12 white-text">
+											<div id="inputField" class="input-field col s8">
+												<input id="message" autocomplete="off" type="text" class="">
+												<label for="message">message</label>
+											</div>
+											<div id="btnDiv">
+												<button id="sendMsg" type="submit" class="btn waves-effect waves-light" style="text-align: right">
+                      Send
+                      <i class="material-icons right">send</i>
+                    </button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col m8">
+				<h6>Current Tones</h6>
+				<div class="row">
+					<div class="col m4">
+						<canvas id="canvasone"></canvas>
+					</div>
+					<div class="col m4">
+						<canvas id="canvastwo"></canvas>
+					</div>
+					<div class="col m4">
+						<canvas id="canvasthree"></canvas>
+					</div>
+				</div>
+				<div class="row">
+					<h6>Aggregate Tones</h6>
+					<div class="row">
+						<div class="col m4">
+							<canvas id="canvasfour"></canvas>
+						</div>
+						<div class="col m4">
+							<canvas id="canvasfive"></canvas>
+						</div>
+						<div class="col m4">
+							<canvas id="canvassix"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+	</main>
+
+	<footer class="page-footer grey darken-3">
+		<div class="container">
+			<div class="row">
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Links</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="/api/friends">API Friend List</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/aldo-sanchez/friend_finder">github repo</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright grey darken-4">
+			<div class="container">
+				© 2014 Copyright Text
+				<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+			</div>
+		</div>
+	</footer>
+
+
+
+	{{!--jquery--}}
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+
+		<!-- chartjs -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
 		<script type="text/javascript" src="chartjs/js/app.js"></script>
-	</body>
+
+		{{!--materialize js--}}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+		{{!--side nav js--}}
+		<script>
+			$(".button-collapse").sideNav();
+		</script>
+</body>
+
 </html>
