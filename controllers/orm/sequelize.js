@@ -20,7 +20,7 @@ module.exports = function() {
     })
   };
   
-  this.getScores = function() {
+  this.getScores = function(message_id, friend) {
     db.IndividualChat.findAll({
       where: {
         message_id: message_id,

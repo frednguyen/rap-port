@@ -49,31 +49,24 @@ firebase.database().ref('/messages/' + mainChat).on('child_added', function (dat
 });
 
 firebase.database().ref('/gotTone/' + mainChat).on('child_added', function (data) {
-  var obj = data.val();
-  // console.log('gots tonesss', obj);
-  request = {
-    message_id: obj.message_id,
-    uid: user.uid
-  }
-  console.log('get obj', request)
-  getCall('/test',JSON.stringify(request))
+  var obj = data.val(); 
+  var url = '/scores/' + obj.message_id + '/' + user.uid;
+  getCall(url);
 })
 
 function postCall(url, data) {
   $.ajax({
     url: url,
-    type: 'POST',
+    method: 'POST',
     data: data,
     contentType: 'application/json'
   });
 }
 
-function getCall(url, data) {
+function getCall(url) {
   $.ajax({
     url: url,
-    type: 'GET',
-    data: data,
-    contentType: 'application/json'
+    method: 'GET',
   })
 }
 
