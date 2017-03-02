@@ -9,16 +9,30 @@ $(document).ready(function () {
 	var SocialPercent = ['0.144215', '0.288072', '0.569773', '0.640682', '0.450624'];
 	var AggregateSocialPercent = ['0.144215', '0.288072', '0.569773', '0.640682', '0.450624'];
 
+// Added colors to individual bars
 	var emotionaldata = {
 		labels: EmotionalTone,
 		datasets: [
 			{
-				label: 'Tone',
-				backgroundColor: 'rgba(255, 0, 0, 0.75)',
+				backgroundColor: [
+					'rgba(255, 99, 132, .75)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
 				borderColor: 'rgba(200, 200, 200, 0.75)',
-				hoverBackgroundColor: 'rgba(255, 0, 0, 1)',
+				hoverBackgroundColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
 				hoverBorderColor: 'rgba(200, 200, 200, 1)',
-				data: EmotionalPercent
+				data: EmotionalPercent,
 			}
 		]
 	};
@@ -95,11 +109,25 @@ $(document).ready(function () {
 
 	var c1 = $("#canvasone");
 
+// removed legend and added a max scale of 1 to keep consistency among charts
 	var barGraph = new Chart(c1, {
 		type: 'horizontalBar',
 		responsive: true,
 		maintainAspectRatio: false,
-		data: emotionaldata
+		data: emotionaldata,
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 1
+					}
+				}]
+			}
+		}
 	})
 
 	var c2 = $("#canvastwo");
