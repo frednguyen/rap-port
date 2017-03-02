@@ -1,7 +1,9 @@
 var ORM = require('./../orm/sequelize.js');
+var firebaseCall = require('./../firebase/firebaseCall');
 
 var orm = new ORM();
 
+// parse through data by looping through obj and storing info in arrays that will be stored in db as strings.
 module.exports = function(message_id, chat_id, obj) {
   var emotion_scoresArray = [],
     emotion_idsArray = [],
@@ -32,6 +34,8 @@ module.exports = function(message_id, chat_id, obj) {
       }
     }
   };
+
+  // join array to strings
   var emotion_ids = emotion_idsArray.join(',');
   var emotion_scores = emotion_scoresArray.join(',');
   var language_ids = language_idsArray.join(',');
@@ -39,5 +43,5 @@ module.exports = function(message_id, chat_id, obj) {
   var social_ids = social_idsArray.join(',');
   var social_scores = social_scoresArray.join(',');
 
-  orm.createIndividualScore(emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, message_id);
+  orm.createIndividualScore(emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, message_id, chat_id, firebaseCall);
 }

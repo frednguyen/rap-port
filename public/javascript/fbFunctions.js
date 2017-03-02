@@ -51,7 +51,7 @@ var count = 0;
 firebase.database().ref('/gotTone/' + mainChat).on('child_added', function (data) {
   count++
   var obj = data.val();
-  console.log(count, obj);
+  console.log('gots tonesss',count, obj);
 })
 
 function postCall(url, data) {
