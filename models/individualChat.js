@@ -20,15 +20,30 @@ module.exports = function(sequelize, DataTypes) {
     message: {
       type: DataTypes.TEXT,
       allowNull: false
-    }
-  },
-  {
-    classMethods: {
-      associate: function(models) {
-        IndividualChat.hasMany(models.IndividualScore, {
-          onDelete: 'cascade'
-        });
-      }
+    },
+    emotion_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    emotion_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    language_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    language_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    social_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    social_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   return IndividualChat;

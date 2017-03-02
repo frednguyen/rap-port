@@ -4,7 +4,7 @@ var firebaseCall = require('./../firebase/firebaseCall');
 var orm = new ORM();
 
 // parse through data by looping through obj and storing info in arrays that will be stored in db as strings.
-module.exports = function(message_id, chat_id, obj) {
+module.exports = function(obj, results) {
   var emotion_scoresArray = [],
     emotion_idsArray = [],
     language_scoresArray = [],
@@ -12,11 +12,11 @@ module.exports = function(message_id, chat_id, obj) {
     social_scoresArray = [],
     social_idsArray = [];
   
-  for(i = 0; i < obj.length; i++) {
-    var category_id = obj[i].category_id;
-    for(j = 0; j < obj[i].tones.length; j++) {
-      var tone_id = obj[i].tones[j].tone_id;
-      var score = obj[i].tones[j].score;
+  for(i = 0; i < results.length; i++) {
+    var category_id = results[i].category_id;
+    for(j = 0; j < results[i].tones.length; j++) {
+      var tone_id = results[i].tones[j].tone_id;
+      var score = results[i].tones[j].score;
       if(category_id == 'emotion_tone') {
         emotion_scoresArray.push(score);
         emotion_idsArray.push(tone_id);
@@ -34,6 +34,11 @@ module.exports = function(message_id, chat_id, obj) {
       }
     }
   };
+  var message_id = obj.messageGUID;
+  var chat_id = obj.chat;
+  var me = obj.me;
+  var friend = obj.friend;
+  var message = obj.message;
 
   // join array to strings
   var emotion_ids = emotion_idsArray.join(',');
@@ -43,5 +48,5 @@ module.exports = function(message_id, chat_id, obj) {
   var social_ids = social_idsArray.join(',');
   var social_scores = social_scoresArray.join(',');
 
-  orm.createIndividualScore(emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, message_id, chat_id, firebaseCall);
+  orm.createIndividualChat(message_id, chat_id, me, friend, message,emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, message_id, chat_id, firebaseCall);
 }

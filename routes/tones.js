@@ -18,7 +18,7 @@ router.post('/test', function(req, res) {
   var friend = obj.friend;
   var message = obj.message;
   
-  orm.createIndividualChat(message_id, chat_id, me, friend, message, watsonCall, firebaseCall);
+  watsonCall(obj)
   res.end()
 });
 
