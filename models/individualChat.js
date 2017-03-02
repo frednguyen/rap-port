@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var IndividualChat = sequelize.define('IndividualChat', {
     message_id: {
       type: DataTypes.STRING,
+      primaryKey: true,
       allowNull: false
     },
     chat_id: {

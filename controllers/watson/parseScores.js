@@ -9,7 +9,7 @@ module.exports = function(message_id, chat_id, obj) {
       var tone_id = obj[i].tones[j].tone_id;
       var score = obj[i].tones[j].score;
       orm.createIndividualScore(message_id, chat_id, category_id, tone_id, score)
-      // console.log(i,j, message_id, category_id, tone_id, score);
+
     }
   }
 }

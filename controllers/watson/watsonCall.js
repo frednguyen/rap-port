@@ -16,8 +16,6 @@ module.exports = function(text, message_id, chat_id, callback) {
       else {
         var obj = tone.document_tone.tone_categories;
         parseScores(message_id, chat_id, obj);
-        // console.log(message_id)
-          // console.log('new call ',obj.tone_categories)
       };
       callback(chat_id)
     });

@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var IndividualScore = sequelize.define('IndividualScore', {
-    message_id: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+    // message_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // },
     category_id: {
       type: DataTypes.STRING,
       allowNull: false
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    scores: {
+    score: {
       type: DataTypes.STRING,
       allowNull: false
     }
