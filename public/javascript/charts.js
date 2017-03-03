@@ -103,7 +103,7 @@ $(document).ready(function () {
   emotionsChart = new Chart(emotionsCanvas, {
     type: 'horizontalBar',
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     data: emotionsData,
     options: options
   });
@@ -111,7 +111,7 @@ $(document).ready(function () {
   languageChart = new Chart(languageCanvas, {
     type: 'horizontalBar',
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     data: languageData,
     options: options
   });
@@ -119,7 +119,7 @@ $(document).ready(function () {
   socialChart = new Chart(socialCanvas, {
     type: 'horizontalBar',
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     data: socialData,
     options: options
   });
@@ -127,9 +127,15 @@ $(document).ready(function () {
 
 var updateArray1 = ['.78929', '.13412', '.382', '.0123', '.666']
 var updateArray2 = ['.58929', '.43412', '.0282', '.1123', '.566']
-function updateCharts(emotion_scores, language_scores) {
-  for(i = 0; i < 5; i++) {
+function updateCharts(emotion_scores, language_scores, social_scores) {
+  for(i = 0; i < emotion_scores.length; i++) {
     emotionsChart.data.datasets[0].data[i] = emotion_scores[i];
+    socialChart.data.datasets[0].data[i] = social_scores[i];
+  }
+  for(j = 0; j < language_scores.length; j++) {
+    languageChart.data.datasets[0].data[i] = language_scores[j];
   }
   emotionsChart.update();
+  languageChart.update();
+  socialChart.update();
 };

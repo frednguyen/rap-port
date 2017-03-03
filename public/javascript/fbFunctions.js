@@ -71,7 +71,12 @@ function getCall(message_id) {
   }).done(function(data) {
     if(user.uid == data.friend) {
       // console.log(data.emotion_scores.split(','))
-      updateCharts(data.emotion_scores.split(','))
+      var emotion_scores = data.emotion_scores.split(',');
+      var language_scores = data.language_scores.split(',');
+      var social_scores = data.social_scores.split(',');
+
+      updateCharts(emotion_scores, language_scores, social_scores);
+      // updateCharts(data.emotion_scores.split(','))
     }
   })
 }
