@@ -19,27 +19,27 @@ module.exports = function(sequelize, DataTypes) {
     },
     emotion_ids: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     emotion_scores: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     language_ids: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     language_scores: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     social_ids: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     social_scores: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     }
   });
   return AggregateChat;

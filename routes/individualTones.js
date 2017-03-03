@@ -6,7 +6,7 @@ var ORM = require('./../controllers/orm/sequelize.js')
 var orm = new ORM();
 var router = express.Router();
 
-router.post('/test', function(req, res) {
+router.post('/individual_tones', function(req, res) {
   var obj = req.body;
 
   var message_id = obj.messageGUID;
@@ -14,16 +14,9 @@ router.post('/test', function(req, res) {
   var me = obj.me;
   var friend = obj.friend;
   var message = obj.message;
-  
-  watsonCall(obj)
+  var individual = true;
+  watsonCall(obj, individual)
   res.end()
 });
-
-// router.get('/test', function(req, res) {
-//   var obj = req.body;
-//   console.log('in here',obj)
-//   res.end()
-//   // orm.getScores()
-// })
 
 module.exports = router;

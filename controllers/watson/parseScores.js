@@ -1,10 +1,11 @@
 var ORM = require('./../orm/sequelize.js');
-var firebaseCall = require('./../firebase/firebaseCall');
+var firebaseCall = require('./../firebase/firebaseCall.js');
+
 
 var orm = new ORM();
 
 // parse through data by looping through obj and storing info in arrays that will be stored in db as strings.
-module.exports = function(obj, results) {
+module.exports = function(obj, results, individual) {
   var emotion_scoresArray = [],
     emotion_idsArray = [],
     language_scoresArray = [],
@@ -48,5 +49,11 @@ module.exports = function(obj, results) {
   var social_ids = social_idsArray.join(',');
   var social_scores = social_scoresArray.join(',');
 
-  orm.createIndividualChat(message_id, chat_id, me, friend, message,emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, message_id, chat_id, firebaseCall);
+  if(individual) {
+    console.log('should be individual', individual)
+    orm.createIndividualChat(message_id, chat_id, me, friend, message,emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, individual, firebaseCall);
+  }
+  else {
+    orm.createAggregateChat(chat_id, me, friend, message, emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, individual, message_id, firebaseCall);
+  }
 }

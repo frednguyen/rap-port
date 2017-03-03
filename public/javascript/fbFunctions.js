@@ -38,20 +38,28 @@ messageRef.on('child_added', function (data) {
 firebase.database().ref('/messages/' + mainChat).on('child_added', function (data) {
   var obj = data.val();
   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
-  var url = '/test';
+  var urlIndividual = '/individual_tones';
+  var urlAggregate = '/aggregate_tones';
   if (user.uid == obj.me) {
-    postCall(url, JSON.stringify(obj));
+    postCall(urlIndividual, JSON.stringify(obj));
+    postCall(urlAggregate, JSON.stringify(obj));
   }
   else {
-    postCall(url, '{}');
+    postCall(urlIndividual, '{}');
+    postCall(urlAggregate, '{}')
   }
 });
 
-firebase.database().ref('/gotTone/' + mainChat).on('child_added', function (data) {
+firebase.database().ref('/gotIndividualTone/' + mainChat).on('child_added', function (data) {
   var obj = data.val(); 
-  
-  // getFriend(obj.message_id)
-  getCall(obj.message_id)
+  console.log('got individual tone')
+  getCall(obj.message_id);
+})
+
+firebase.database().ref('/gotAggregateTone/' + mainChat).on('child_added', function (data) {
+  var obj = data.val(); 
+  console.log('i got an aggregate Tone')
+  // getCall(obj.message_id);
 })
 
 function postCall(url, data) {

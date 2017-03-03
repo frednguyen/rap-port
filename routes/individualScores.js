@@ -7,8 +7,7 @@ var router = express.Router();
 
 router.get('/individual_scores/:message_id/', function(req, res) {
   var obj = req.params;
-  orm.getScores(obj.message_id, res)
-  // res.end()
+  orm.getIndividualScores(obj.message_id, res)
 });
 
 module.exports = router;

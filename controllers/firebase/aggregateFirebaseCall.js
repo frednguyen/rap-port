@@ -8,14 +8,7 @@ admin.initializeApp({
 
 var db = admin.database();
 
-module.exports = function(chat_id, message_id, individual) {
-  console.log('indiv', individual)
-  if(individual) {
-    var node = '/gotIndividualTone/';
-  }
-  else {
-    var node = '/gotAggregateTone/';
-  }
+module.exports = function(chat_id, message_id) {
   var key = admin.database().ref().push().key;
-  admin.database().ref(node +'/'+ chat_id +'/'+ key).update({message_id});
+  admin.database().ref('/gotAggregateTone/' +'/'+ chat_id +'/'+ key).update({message_id});
 }
