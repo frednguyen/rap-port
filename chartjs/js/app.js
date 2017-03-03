@@ -41,12 +41,25 @@ $(document).ready(function () {
 		labels: LanguageTone,
 		datasets: [
 			{
-				label: 'Tone',
-				backgroundColor: 'rgba(200, 200, 200, 0.75)',
+				backgroundColor: [
+					'rgba(255, 99, 132, .75)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
 				borderColor: 'rgba(200, 200, 200, 0.75)',
-				hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+				hoverBackgroundColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
 				hoverBorderColor: 'rgba(200, 200, 200, 1)',
-				data: LanguagePercent
+				data: LanguagePercent,
 			}
 		]
 	};
@@ -55,12 +68,25 @@ $(document).ready(function () {
 		labels: SocialTone,
 		datasets: [
 			{
-				label: 'Tone',
-				backgroundColor: 'rgba(200, 200, 200, 0.75)',
+				backgroundColor: [
+					'rgba(255, 99, 132, .75)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
 				borderColor: 'rgba(200, 200, 200, 0.75)',
-				hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+				hoverBackgroundColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
 				hoverBorderColor: 'rgba(200, 200, 200, 1)',
-				data: SocialPercent
+				data: SocialPercent,
 			}
 		]
 	};
@@ -69,12 +95,25 @@ $(document).ready(function () {
 		labels: EmotionalTone,
 		datasets: [
 			{
-				label: 'Tone',
-				backgroundColor: 'rgba(255, 0, 0, 0.75)',
+				backgroundColor: [
+					'rgba(255, 99, 132, .75)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
 				borderColor: 'rgba(200, 200, 200, 0.75)',
-				hoverBackgroundColor: 'rgba(255, 0, 0, 1)',
+				hoverBackgroundColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
 				hoverBorderColor: 'rgba(200, 200, 200, 1)',
-				data: AggregateEmotionalPercent
+				data: AggregateEmotionalPercent,
 			}
 		]
 	};
@@ -83,12 +122,25 @@ $(document).ready(function () {
 		labels: LanguageTone,
 		datasets: [
 			{
-				label: 'Tone',
-				backgroundColor: 'rgba(200, 200, 200, 0.75)',
+				backgroundColor: [
+					'rgba(255, 99, 132, .75)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
 				borderColor: 'rgba(200, 200, 200, 0.75)',
-				hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+				hoverBackgroundColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
 				hoverBorderColor: 'rgba(200, 200, 200, 1)',
-				data: AggregateLanguagePercent
+				data: AggregateLanguagePercent,
 			}
 		]
 	};
@@ -97,12 +149,25 @@ $(document).ready(function () {
 		labels: SocialTone,
 		datasets: [
 			{
-				label: 'Tone',
-				backgroundColor: 'rgba(200, 200, 200, 0.75)',
+				backgroundColor: [
+					'rgba(255, 99, 132, .75)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
 				borderColor: 'rgba(200, 200, 200, 0.75)',
-				hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+				hoverBackgroundColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
 				hoverBorderColor: 'rgba(200, 200, 200, 1)',
-				data: AggregateSocialPercent
+				data: AggregateSocialPercent,
 			}
 		]
 	};
@@ -136,7 +201,20 @@ $(document).ready(function () {
 		type: 'horizontalBar',
 		responsive: true,
 		maintainAspectRatio: false,
-		data: languagedata
+		data: languagedata,
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 1
+					}
+				}]
+			}
+		}
 	})
 
 	var c3 = $("#canvasthree");
@@ -145,7 +223,20 @@ $(document).ready(function () {
 		type: 'horizontalBar',
 		responsive: true,
 		maintainAspectRatio: false,
-		data: socialdata
+		data: socialdata,
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 1
+					}
+				}]
+			}
+		}
 	})
 
 	var c4 = $("#canvasfour");
@@ -154,7 +245,20 @@ $(document).ready(function () {
 		type: 'horizontalBar',
 		responsive: true,
 		maintainAspectRatio: false,
-		data: aggregateemotionaldata
+		data: aggregateemotionaldata,
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 1
+					}
+				}]
+			}
+		}
 	})
 
 	var c5 = $("#canvasfive");
@@ -163,7 +267,20 @@ $(document).ready(function () {
 		type: 'horizontalBar',
 		responsive: true,
 		maintainAspectRatio: false,
-		data: aggregatelanguagedata
+		data: aggregatelanguagedata,
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 1
+					}
+				}]
+			}
+		}
 	})
 
 	var c6 = $("#canvassix");
@@ -172,6 +289,19 @@ $(document).ready(function () {
 		type: 'horizontalBar',
 		responsive: true,
 		maintainAspectRatio: false,
-		data: aggregatesocialdata
+		data: aggregatesocialdata,
+		options: {
+			legend: {
+				display: false
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						max: 1
+					}
+				}]
+			}
+		}
 	});
 });
