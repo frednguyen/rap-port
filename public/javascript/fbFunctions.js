@@ -71,7 +71,7 @@ function getCall(message_id) {
   }).done(function(data) {
     if(user.uid == data.friend) {
       // console.log(data.emotion_scores.split(','))
-      updateTest(data.emotion_scores.split(','))
+      updateCharts(data.emotion_scores.split(','))
     }
   })
 }
