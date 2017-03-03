@@ -69,8 +69,10 @@ function getCall(message_id) {
     url: url,
     method: 'GET',
   }).done(function(data) {
-    if(user.uid == data.friend)
-    console.log(data)
+    if(user.uid == data.friend) {
+      // console.log(data.emotion_scores.split(','))
+      updateTest(data.emotion_scores.split(','))
+    }
   })
 }
 
