@@ -2,7 +2,8 @@ module.exports = function(sequelize, DataTypes) {
   var AggregateChat = sequelize.define('AggregateChat', {
     chat_id: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     me: {
       type: DataTypes.STRING,
@@ -13,17 +14,32 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     message: {
-      type: DataTypes.TEXT('medium'),
+      type: DataTypes.TEXT,
       allowNull: false
-    }
-  }, 
-  {
-    classMethods: {
-      associate: function(models) {
-        AggregateChat.hasMany(models.AggregateScore, {
-          onDelete: 'cascade'
-        });
-      }
+    },
+    emotion_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    emotion_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    language_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    language_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    social_ids: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    social_scores: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   return AggregateChat;

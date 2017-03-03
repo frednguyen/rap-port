@@ -64,19 +64,17 @@ function postCall(url, data) {
 }
 
 function getCall(message_id) {
-  var url = '/scores/' + message_id;
+  var url = '/individual_scores/' + message_id;
   $.ajax({
     url: url,
     method: 'GET',
   }).done(function(data) {
     if(user.uid == data.friend) {
-      // console.log(data.emotion_scores.split(','))
       var emotion_scores = data.emotion_scores.split(',');
       var language_scores = data.language_scores.split(',');
       var social_scores = data.social_scores.split(',');
 
       updateCharts(emotion_scores, language_scores, social_scores);
-      // updateCharts(data.emotion_scores.split(','))
     }
   })
 }
