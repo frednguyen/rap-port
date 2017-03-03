@@ -69,6 +69,7 @@ function getCall(message_id) {
     url: url,
     method: 'GET',
   }).done(function(data) {
+    if(user.uid == data.friend)
     console.log(data)
   })
 }
@@ -140,15 +141,21 @@ function initChatNodes(uid, name) {
 };
 
 // Send message only allows messges through if chatGUID is valid.
-function sendMessage(chatGUID, me, friend, message) {
+function sendMessage(chatGUID, initiator, friend, message) {
+  if(initiator != user.uid) {
+    friend = initiator
+  }
+  // console.log('this is me ' ,me);
   chatsRef.child(chatGUID).once('value', function (snapshot) {
     var data = snapshot.val();
     if (data != null) {
+      
+
       var messageGUID = firebase.database().ref().push().key;
       messages = {
         chat: chatGUID,
         name: user.name,
-        me: me,
+        me: user.uid,
         myPhoto: user.photoURL,
         friend: friend,
         message: message,
@@ -179,32 +186,16 @@ function getMembers(chatGUID, message) {
     for (var key in obj) {
       var initiated = obj[key];
       if (initiated) {
-        var me = key;
+        var initiator = key;
       }
       else {
         var friend = key;
       }
     }
-    sendMessage(chatGUID, me, friend, message)
+    // console.log('me', me)
+    sendMessage(chatGUID, initiator, friend, message)
     })
 };
-
-function getFriend(chatGUID, message) {
-  var membersRef = firebase.database().ref('/members/' + chatGUID);
-  membersRef.once('value').then(function (snapshot) {
-    var obj = snapshot.val();
-    for (var key in obj) {
-      var initiated = obj[key];
-      if (initiated) {
-        var me = key;
-      }
-      else {
-        var friend = key;
-      }
-    }
-    getCall(message, friend);
-  });
-}
 
 // Gets ChatGUID for from chat window. 
 function getChatGUID() {
