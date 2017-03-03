@@ -20,14 +20,16 @@ module.exports = function() {
     })
   };
   
-  this.getScores = function(message_id, friend) {
+  this.getScores = function(message_id, res) {
     db.IndividualChat.findAll({
+      attributes: ['friend', 'emotion_ids', 'emotion_scores', 'social_ids', 'social_scores', 'language_ids', 'language_scores'],
       where: {
         message_id: message_id,
-        friend: friend
+        // friend: friend
       }
     }).then(function(data) {
-      console.log(data)
+      console.log(data[0])
+      res.json(data[0])
     })
   }
   // this.createIndividualChat = function(message_id, chat_id, me, friend, message, watsonCall){

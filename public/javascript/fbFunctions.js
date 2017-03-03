@@ -37,7 +37,6 @@ messageRef.on('child_added', function (data) {
 
 firebase.database().ref('/messages/' + mainChat).on('child_added', function (data) {
   var obj = data.val();
-  console.log('post obj', obj)
   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
   var url = '/test';
   if (user.uid == obj.me) {
@@ -50,8 +49,9 @@ firebase.database().ref('/messages/' + mainChat).on('child_added', function (dat
 
 firebase.database().ref('/gotTone/' + mainChat).on('child_added', function (data) {
   var obj = data.val(); 
-  var url = '/scores/' + obj.message_id + '/' + user.uid;
-  getCall(url);
+  
+  // getFriend(obj.message_id)
+  getCall(obj.message_id)
 })
 
 function postCall(url, data) {
@@ -63,10 +63,13 @@ function postCall(url, data) {
   });
 }
 
-function getCall(url) {
+function getCall(message_id) {
+  var url = '/scores/' + message_id;
   $.ajax({
     url: url,
     method: 'GET',
+  }).done(function(data) {
+    console.log(data)
   })
 }
 
@@ -185,6 +188,23 @@ function getMembers(chatGUID, message) {
     sendMessage(chatGUID, me, friend, message)
     })
 };
+
+function getFriend(chatGUID, message) {
+  var membersRef = firebase.database().ref('/members/' + chatGUID);
+  membersRef.once('value').then(function (snapshot) {
+    var obj = snapshot.val();
+    for (var key in obj) {
+      var initiated = obj[key];
+      if (initiated) {
+        var me = key;
+      }
+      else {
+        var friend = key;
+      }
+    }
+    getCall(message, friend);
+  });
+}
 
 // Gets ChatGUID for from chat window. 
 function getChatGUID() {
