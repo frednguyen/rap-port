@@ -36,6 +36,9 @@ main {
   padding-bottom: 0px
 }
   
+.card-content {
+  color: #424242;
+}
 #messagesCardRow {
   margin-bottom: 0px;
   padding: 0;
