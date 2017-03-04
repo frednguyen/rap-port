@@ -125,8 +125,6 @@ $(document).ready(function () {
   });
 })
 
-var updateArray1 = ['.78929', '.13412', '.382', '.0123', '.666']
-var updateArray2 = ['.58929', '.43412', '.0282', '.1123', '.566']
 function updateCharts(emotion_scores, language_scores, social_scores) {
   for(i = 0; i < emotion_scores.length; i++) {
     emotionsChart.data.datasets[0].data[i] = emotion_scores[i];

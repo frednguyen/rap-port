@@ -37,4 +37,4 @@ jspm_packages
 .node_repl_history
 watson_keys.js
 serviceAccountKey.json
-config.json
+.env
