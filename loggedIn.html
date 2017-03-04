@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    
+    <!--Materialize CSS-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+     <link rel="stylesheet" href="/css/loggedIn.css">
+  </head>
+  <body>
+    <h1>Welcome to My Awesome App</h1>
+    <button id="st">sign out</button>
+    <div id="currentUsers"></div>
+    <div class="row">
+      <div class="col s3">
+        <div id="availableUsers" class="collection">
+        </div>    
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+  <script src="/javascript/events.js"></script>  
+  <script src="/javascript/fbSetup.js"></script>
+  <script src="/javascript/fbFunctions.js"></script>
+  <script src="/javascript/domManipulations.js"></script>  
+  </body>
+</html>
