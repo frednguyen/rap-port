@@ -9,7 +9,7 @@ var socialChart;
 
 var emotionsLabels = ['Anger', 'Disgust', 'Fear', 'Joy', 'Sadness'];
 var languageLabels = ['Analytical', 'Confident', 'Tentative'];
-var socialLabels = ['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Emotional Range'];
+var socialLabels = ['Open', 'Conscience', 'Extraversion', 'Agreeableness', 'Emotion Range'];
 
 var emotionsScores = [0,0,0,0,0];
 var languageScores = [0,0,0,0,0];
