@@ -8,11 +8,10 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <!--<link href="css/style.css" rel="stylesheet">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="public/css/logIn.css">
   </head>
   <body>
 
-  
   <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   
@@ -21,28 +20,79 @@
   <script src="javascript/fbSetup.js"></script>
   <script src="javascript/fbUIconfig.js"></script>
   
-<div class="container">
+
+
+<header>
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper blue-grey darken-4">
       <a href="#" class="brand-logo right"><img 
         src="rapport-logo2.svg" 
         height="100px"
         width="100px"/></a>
 
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        <li><a href="sass.html">Settings</a></li>
+        <li><a href="badges.html">Chats</a></li>
+        <li><a href="collapsible.html">Archives</a></li>
       </ul>
     </div>
   </nav>
-        
-  <h1 align='center'>Demo</h1>
-  <div id="firebaseui-auth-container">
-    
+</header>
+
+<main>
+<div class="spacer"></div>
+<div class="chatbox-area">     
+
+  <h3 align='center'>Rapport makes it easy to understand your customers</h3>
+  <h4 align='center'>Sign in to get started</h4>
+
+  <div id="firebaseui-auth-container"> </div>
+
+<br>
 </div>
-  </div>
+</main>
+<br>
+  <footer class="page-footer blue-grey">
+    <div class="container">
+            <div class="row">
+              
+              <div class="col l4">
+                <h5 class="white-text">Rapport</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
+                </ul>
+              </div>
+
+              <div class="col l4">
+                <h5 class="white-text">Help</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Getting Started</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+                </ul>
+              </div>
+
+              <div class="col l4">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">twitter</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Rapport
+           
+            </div>
+          </div>
+          
+  </footer>
+
+
   </body>
 
-   <link rel="stylesheet" href="public/css/logIn.css">
+  
 </html>

@@ -1,3 +1,22 @@
+main {
+    flex: 1 0 auto;
+    background-color: #b0bec5;
+	}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0 5% 0 5%;
+  }
+
+  .spacer {
+  	height: 50px;
+  	background-color: white;
+
+  }
+
+
 .userPhoto {
   margin-top: 7px;
 }
@@ -21,4 +40,24 @@
 
 .badge {
   margin-top: 21px
+}
+
+#currentUsers {
+	background-color: black;
+}
+
+h1 {
+	color: pink;
+}
+
+#chart {
+  margin-left: 5%;
+}
+
+p {
+  margin-left: 5%;
+  margin-right: 5%;
+  color: white;
+  font-size: 20px;
+  color: white;
 }
