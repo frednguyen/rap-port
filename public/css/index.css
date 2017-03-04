@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    
+    margin: 0 5% 0 5%;
+  }
+
+  .onlyForColor {
+
+  }
+
+  main {
+    flex: 1 0 auto;
+    background-color: #b0bec5;
+  
+  }
+  h3,h4 {
+  	color: white;
+  }
+
+  .spacer {
+  	height: 50px;
+  	background-color: white;
+
+  }

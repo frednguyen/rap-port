@@ -7,6 +7,12 @@ $('#st').on('click keypress', function() {
   deleteUserInfo(user.uid);
 });
 
+$('#slider').on('click', function() {
+  console.log('test')
+  $("#slider").sideNav();
+  return false;
+})
+
 $('#sendMsg').on('click keypress', function() {
   var messageDiv = $('#message');
   var chatGUID = getChatGUID();

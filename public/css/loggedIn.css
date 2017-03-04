@@ -1,3 +1,47 @@
+.inline {
+  float: left;
+}
+
+.nameBtn {
+  margin-top: 6%;
+  margin-left: 6%;
+}
+
+.userBtn {
+  color: red;
+}
+
+.userBtnRow {
+  margin-bottom: 0;
+}
+
+.btnUserName {
+  margin-top: 21px;
+}
+
+.badge {
+  margin-top: 21px
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: #b0bec5;
+	}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0 5% 0 5%;
+  }
+
+  .spacer {
+  	height: 50px;
+  	background-color: white;
+
+  }
+
+
 .userPhoto {
   margin-top: 7px;
 }
@@ -20,5 +64,59 @@
 }
 
 .badge {
-  margin-top: 21px
+  margin-top: auto;
+}
+
+#currentUsers {
+	background-color: black;
+}
+
+h1 {
+	color: pink;
+}
+
+/*h2 {
+  font-size: 20px;
+}*/
+
+#peopleIcon {
+  float: right;
+  color: #ff6d00;
+}
+
+#headerRow {
+  margin-bottom: 2%;
+}
+
+li {
+  
+}
+
+#onlineHeader {
+  padding-left: 0;
+  font-size: 35px;
+}
+
+#onlineHeaderCol {
+  padding-left: 0;
+}
+#chart-img {
+    max-width: 100%;
+    max-height: 100%;
+    display:block;
+    margin:auto;
+}
+
+p {
+  margin-left: 5%;
+  margin-right: 5%;
+  color: white;
+  font-size: 20px;
+  color: white;
+}
+
+.collection a.collection-item {
+  display: block;
+  transition: .25s;
+  color: #78909c;
 }

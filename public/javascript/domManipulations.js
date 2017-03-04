@@ -5,36 +5,53 @@ function displayCurrentUsers(usersObj) {
     var uid = usersObj[key].uid;
     var photoURL = usersObj[key].photoURL;
     if(key != user.uid){
+      // var line = $('<li></li>');
       var userBtn = $('<a></a>');
-      var row = $('<div></div>');
-      var photoDiv = $('<div></div>');
-      var userPhoto = $('<img>');
-      var userDiv = $('<div></div>');
-      var notificationDiv = $('<div></div>');
-
-      row.addClass('row userBtnRow');
+      
       userBtn.attr({
         class: 'userBtn collection-item',
         'data-uid': uid,
         'data-name': name,
         href: '#',
-        style: 'padding: 0px;'
+        // style: 'padding: 0px;'
       });
-      userPhoto.attr({
-        src: photoURL,
-        class: 'circle responsive-img userPhoto',
-      });
-      userDiv.addClass('col s7 btnUserName');
-      photoDiv.addClass('col s3');
-      userDiv.text(name)
-      notificationDiv.addClass('col s2 notification')
-
-      userPhoto.appendTo(photoDiv)
-      row.appendTo(userBtn);
-      photoDiv.appendTo(row);
-      userDiv.appendTo(row);
-      notificationDiv.appendTo(row)
+      
+      userBtn.text(name)
+      // userBtn.appendTo(line);
       userBtn.appendTo('#availableUsers')
+
+      // var userBtn = $('<a></a>');
+      // var li = $('<li></li>')
+      // var row = $('<div></div>');
+      // var photoDiv = $('<div></div>');
+      // var userPhoto = $('<img>');
+      // var userDiv = $('<div></div>');
+      // var notificationDiv = $('<div></div>');
+
+      // row.addClass('row userBtnRow');
+      // userBtn.attr({
+      //   class: 'userBtn collection-item',
+      //   'data-uid': uid,
+      //   'data-name': name,
+      //   href: '#',
+      //   style: 'padding: 0px;'
+      // });
+      // userPhoto.attr({
+      //   src: photoURL,
+      //   class: 'circle responsive-img userPhoto',
+      // });
+      // userDiv.addClass('col s7 btnUserName');
+      // photoDiv.addClass('col s3');
+      // userDiv.text(name)
+      // notificationDiv.addClass('col s2 notification')
+
+      // userPhoto.appendTo(photoDiv)
+      // row.appendTo(userBtn);
+      // photoDiv.appendTo(row);
+      // userDiv.appendTo(row);
+      // notificationDiv.appendTo(row)
+      // li.appendTo('#availableUsers')
+      // userBtn.appendTo(li)
     }
   };
 };
@@ -47,11 +64,12 @@ function getNotification(friend, me, chat) {
   // userBtn.empty();
   var notification = $('<span></span>');
   notification.attr({
-    class: 'secondary-content new badge',
-    style: 'margin-top: 21px'
+    class: 'secondary-content new badge orange accent-4',
+    style: 'margin-top: auto'
   });
   notification.text('1');
-  notification.appendTo(userBtn.children('.row').children('.notification'));
+  // notification.appendTo(userBtn.children('.row').children('.notification'));
+  notification.appendTo(userBtn);
   // $('#availableUsers').empty();
 };
 
