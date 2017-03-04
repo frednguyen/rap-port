@@ -67,17 +67,17 @@ messageRef.on('child_added', function (data) {
 //   }
 // });
 
-firebase.database().ref('/gotIndividualTone/' + mainChat).on('child_added', function (data) {
-  var obj = data.val(); 
-  console.log('got individual tone')
-  getCall(obj.message_id);
-})
+// firebase.database().ref('/gotIndividualTone/' + mainChat).on('child_added', function (data) {
+//   var obj = data.val(); 
+//   console.log('got individual tone')
+//   getCall(obj.message_id);
+// })
 
-firebase.database().ref('/gotAggregateTone/' + mainChat).on('child_added', function (data) {
-  var obj = data.val(); 
-  console.log('i got an aggregate Tone')
-  // getCall(obj.message_id);
-})
+// firebase.database().ref('/gotAggregateTone/' + mainChat).on('child_added', function (data) {
+//   var obj = data.val(); 
+//   console.log('i got an aggregate Tone')
+//   // getCall(obj.message_id);
+// })
 
 function postCall(url, data) {
   $.ajax({
@@ -232,3 +232,15 @@ firebase.database().ref('/messages/' + mainChat).on('child_added', function (dat
     postCall(urlAggregate, '{}')
   }
 });
+
+firebase.database().ref('/gotIndividualTone/' + mainChat).on('child_added', function (data) {
+  var obj = data.val(); 
+  console.log('got individual tone')
+  getCall(obj.message_id);
+})
+
+firebase.database().ref('/gotAggregateTone/' + mainChat).on('child_added', function (data) {
+  var obj = data.val(); 
+  console.log('i got an aggregate Tone')
+  // getCall(obj.message_id);
+})
