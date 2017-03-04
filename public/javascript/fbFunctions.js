@@ -1,3 +1,20 @@
+var initApp = function () {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user != null) {
+      var uid = user.uid
+      user.providerData.forEach(function (profile) {
+        var name = profile.displayName;
+        var email = profile.email;
+        var photoURL = profile.photoURL;
+        setUserInfo(name, uid, email, photoURL);
+      });
+    } else {
+      window.location.href = '/';
+    }
+  }, function (err) {
+    console.log(err);
+  });
+};
 // User constructor
 var User = function (name, uid, email, photoURL) {
   this.name = name;
@@ -7,7 +24,7 @@ var User = function (name, uid, email, photoURL) {
 };
 // Initialize a global empty user
 var user;
-var mainChat = getChatGUID();
+
 
 // Firebase references
 var usersRef = firebase.database().ref('users');
@@ -88,23 +105,7 @@ function getCall(message_id) {
 }
 
 // check for authoriazation
-initApp = function () {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user != null) {
-      var uid = user.uid
-      user.providerData.forEach(function (profile) {
-        var name = profile.displayName;
-        var email = profile.email;
-        var photoURL = profile.photoURL;
-        setUserInfo(name, uid, email, photoURL);
-      });
-    } else {
-      window.location.href = '/';
-    }
-  }, function (err) {
-    console.log(err);
-  });
-};
+
 
 // set user info when logged in
 function setUserInfo(name, uid, email, photoURL) {
@@ -215,3 +216,5 @@ function getChatGUID() {
   var loc = window.location.href;
   return chatGUID = loc.substr(loc.indexOf('/chats/') + 7);
 };
+
+var mainChat = getChatGUID();
