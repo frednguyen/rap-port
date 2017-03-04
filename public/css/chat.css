@@ -46,12 +46,12 @@ main {
 }
 
 #btnDiv {
-  padding-top: 4%;
+  padding-top: 10%;
   float: right;
 }
 
 #inputField {
-  padding-right: 0px;
+  /*padding-right: 0px;*/
 }
 
 .message-container {
@@ -106,6 +106,10 @@ h4 {
 .input-field input[type=text]:focus {
   border-bottom: 1px solid #ff6d00  ;
   box-shadow: 0 1px 0 0 #ff6d00  ;
+}
+
+#chatCol {
+  padding: 0;
 }
 
 
