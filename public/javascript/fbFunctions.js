@@ -52,20 +52,20 @@ messageRef.on('child_added', function (data) {
   sendNotification(friend, me, chat, message);
 });
 
-firebase.database().ref('/messages/' + mainChat).on('child_added', function (data) {
-  var obj = data.val();
-  displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
-  var urlIndividual = '/individual_tones';
-  var urlAggregate = '/aggregate_tones';
-  if (user.uid == obj.me) {
-    postCall(urlIndividual, JSON.stringify(obj));
-    postCall(urlAggregate, JSON.stringify(obj));
-  }
-  else {
-    postCall(urlIndividual, '{}');
-    postCall(urlAggregate, '{}')
-  }
-});
+// firebase.database().ref('/messages/' + mainChat).on('child_added', function (data) {
+//   var obj = data.val();
+//   displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
+//   var urlIndividual = '/individual_tones';
+//   var urlAggregate = '/aggregate_tones';
+//   if (user.uid == obj.me) {
+//     postCall(urlIndividual, JSON.stringify(obj));
+//     postCall(urlAggregate, JSON.stringify(obj));
+//   }
+//   else {
+//     postCall(urlIndividual, '{}');
+//     postCall(urlAggregate, '{}')
+//   }
+// });
 
 firebase.database().ref('/gotIndividualTone/' + mainChat).on('child_added', function (data) {
   var obj = data.val(); 
@@ -218,3 +218,17 @@ function getChatGUID() {
 };
 
 var mainChat = getChatGUID();
+firebase.database().ref('/messages/' + mainChat).on('child_added', function (data) {
+  var obj = data.val();
+  displayMessage(obj.name, obj.message, obj.messageGUID, obj.myPhoto);
+  var urlIndividual = '/individual_tones';
+  var urlAggregate = '/aggregate_tones';
+  if (user.uid == obj.me) {
+    postCall(urlIndividual, JSON.stringify(obj));
+    postCall(urlAggregate, JSON.stringify(obj));
+  }
+  else {
+    postCall(urlIndividual, '{}');
+    postCall(urlAggregate, '{}')
+  }
+});
