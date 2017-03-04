@@ -9,7 +9,6 @@ admin.initializeApp({
 var db = admin.database();
 
 module.exports = function(chat_id, message_id, individual) {
-  console.log('indiv', individual)
   if(individual) {
     var node = '/gotIndividualTone/';
   }

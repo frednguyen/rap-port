@@ -9,7 +9,7 @@ var router = express.Router();
 router.post('/aggregate_tones/', function(req, res) {
   
   var obj = req.body;
-  console.log(obj)
+  // console.log(obj)
   var individual = false;
   orm.isIdUnique(obj, individual, watsonCall);
   res.end()

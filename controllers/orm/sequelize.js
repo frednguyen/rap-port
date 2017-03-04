@@ -44,25 +44,34 @@ module.exports = function() {
         // friend: friend
       }
     }).then(function(data) {
-      console.log(data[0])
       res.json(data[0])
     });
   };
   this.isIdUnique = function(obj, individual, watsonCall) {
-    var chat_id = obj.chat_id;
+    var chat_id = obj.chat;
+    console.log('first function', chat_id)
     db.AggregateChat.count({
       where: {
-        chat_id: obj.chat_id
+        chat_id: obj.chat
       }
     }).then(function(count) {
-      // console.log(data)
-      if(count != 0) {
-        // return false;
-        console.log('this is not unitque')
+      console.log('this chat',obj.chat)
+      console.log('i am outside if', count, obj.chat)
+      if(count > 0) {
+        console.log('i am inside if')
+        db.AggregateChat.findAll({
+          attributes: ['message'],
+          where: {
+            chat_id: obj.chat
+          }
+        }).then(function(data) {
+          // var message = data.get({plain: true})
+          // console.log('this is my new data', message)
+        })
       }
       else {
+        console.log('i am inside else')
         watsonCall(obj, individual)
-        console.log('this is unique')
       }      
       // return true;
     });

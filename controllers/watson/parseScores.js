@@ -50,7 +50,6 @@ module.exports = function(obj, results, individual) {
   var social_scores = social_scoresArray.join(',');
 
   if(individual) {
-    console.log('should be individual', individual)
     orm.createIndividualChat(message_id, chat_id, me, friend, message,emotion_ids, emotion_scores, language_ids, language_scores, social_ids, social_scores, individual, firebaseCall);
   }
   else {
